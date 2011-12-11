@@ -54,7 +54,11 @@ public class DbAdapter {
 	+ "is_complete tinyint(1) not null, created_at datetime not null default now());"
 
 	+ "create table lists (_id integer primary key autoincrement, "
-	+ "name varchar(255) not null, order_no integer not null);";
+	+ "name varchar(255) not null, order_no integer not null);"
+
+	+ "insert into lists values (1, 'Critical', 1);"
+	+ "insert into lists values (2, 'Opportunity', 2);"
+	+ "insert into lists values (3, 'Horizon', 3);";
 
     /**
      * Database drop sql statement
@@ -121,7 +125,7 @@ public class DbAdapter {
 
 
     /********************************************************************************
-     * CRUD methods
+     * CRUD for tasks
      ********************************************************************************/
 
     /**
@@ -189,5 +193,38 @@ public class DbAdapter {
         values.put(KEY_TASKS_IS_COMPLETE, is_complete);
 
         return mDb.update(DATABASE_TABLE_TASKS, values, KEY_TASKS_ID + "=" + id, null) > 0;
+    }
+
+
+    /********************************************************************************
+     * CRUD for lists
+     ********************************************************************************/
+
+    /**
+     * Return a Cursor over the list of all lists in the database
+     * 
+     * @return Cursor over all lists
+     */
+    public Cursor fetchAllLists() {
+        return mDb.query(DATABASE_TABLE_LISTS,
+			 new String[] {KEY_LISTS_ID, KEY_LISTS_NAME, KEY_LISTS_ORDER_NO},
+			 null, null, null, null, null);
+    }
+
+    /**
+     * Return a Cursor positioned at the list that matches the given id
+     * 
+     * @return Cursor positioned to matching list, if found
+     * @throws SQLException if list could not be found/retrieved
+     */
+    public Cursor fetchList(long id) throws SQLException {
+        Cursor mCursor =
+            mDb.query(true, DATABASE_TABLE_LISTS,
+		      new String[] {KEY_LISTS_ID, KEY_LISTS_NAME, KEY_LISTS_ORDER_NO},
+		      KEY_LISTS_ID + "=" + id, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
     }
 }
