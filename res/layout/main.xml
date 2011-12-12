@@ -2,12 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Hello World, MYWN"
-    />
-</LinearLayout>
+    android:layout_height="fill_parent">
 
+  <TextView
+      android:id="@+id/list_name"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Opportunity STUB" />
+
+  <ListView android:id="@+id/task_list"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:scrollbars="vertical"/>
+
+  <LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+    <EditText android:id="@+id/task_description"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_weight="1"/>
+    <Button android:id="@+id/add_task"
+	    android:text="@string/add_task"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"/>
+  </LinearLayout>
+
+</LinearLayout>

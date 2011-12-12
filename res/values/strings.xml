@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MYWN</string>
+  <string name="app_name">MYWN</string>
+  <string name="no_tasks">No tasks yet</string>
+  <string name="add_task">Add task</string>
 </resources>
