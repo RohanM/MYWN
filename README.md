@@ -1,10 +1,10 @@
-= MYWN
+# MYWN
 
 A simple but easy to use TODO list app based around the methodology presented in
 Michael Linenberger's book, Master Your Workday Now!
 
 
-== Licence (GPL)
+## Licence (GPL)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
